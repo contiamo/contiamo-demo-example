@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #F8F7F5;
+    color: #2D2D30;
+  }
+}
+
+/* --- Motion library (copy wholesale into a new demo) --- */
+
+@keyframes pulse-slow { 0%,100%{opacity:.6} 50%{opacity:1} }
+.animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+.animate-slide-in { animation: slide-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in { animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes number-flash {
+  0%   { color: #B8860B; }
+  100% { color: inherit; }
+}
+.animate-number-flash { animation: number-flash 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+@keyframes stat-finalize {
+  0%   { color: #B8860B; transform: scale(1.08); }
+  100% { color: #1C1C1E; transform: scale(1); }
+}
+.animate-stat-finalize { animation: stat-finalize 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes settle-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-settle-in { animation: settle-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes bar-pulse { 0%,100%{opacity:.3} 50%{opacity:.6} }
+.animate-bar-pulse { animation: bar-pulse 1.5s ease-in-out infinite; }
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  15%,45%,75% { transform: translateX(-6px); }
+  30%,60%,90% { transform: translateX(6px); }
+}
+.animate-shake { animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
+
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-children > *:nth-child(1)  { animation-delay: 0.06s; }
+.stagger-children > *:nth-child(2)  { animation-delay: 0.12s; }
+.stagger-children > *:nth-child(3)  { animation-delay: 0.18s; }
+.stagger-children > *:nth-child(4)  { animation-delay: 0.24s; }
+.stagger-children > *:nth-child(5)  { animation-delay: 0.30s; }
+.stagger-children > *:nth-child(6)  { animation-delay: 0.36s; }
+.stagger-children > *:nth-child(7)  { animation-delay: 0.42s; }
+.stagger-children > *:nth-child(8)  { animation-delay: 0.48s; }
+.stagger-children > *:nth-child(9)  { animation-delay: 0.54s; }
+.stagger-children > *:nth-child(10) { animation-delay: 0.60s; }
+.stagger-children > *:nth-child(n+11) { animation-delay: 0.60s; }
+
+@keyframes scan-sweep {
+  0%   { top: -2px; opacity: 0; }
+  5%   { opacity: 1; }
+  85%  { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #B8860B 20%, #D4A843 50%, #B8860B 80%, transparent 100%);
+  box-shadow: 0 0 12px 2px rgba(184, 134, 11, 0.15), 0 1px 4px rgba(184, 134, 11, 0.1);
+  pointer-events: none;
+  animation: scan-sweep 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #F0EFEC 25%, #E5E3DF 37%, #F0EFEC 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@layer utilities {
+  .transition-subtle {
+    transition:
+      color            0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color     0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity          0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow       0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
