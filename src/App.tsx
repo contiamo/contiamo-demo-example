@@ -23,6 +23,14 @@ const NAV = [
 export default function App() {
   return (
     <div className="min-h-full">
+      <div className="hidden h-8 items-center justify-between bg-jw-black px-6 text-2xs tracking-wider text-white/70 md:flex">
+        <span className="text-white/50">contiamo</span>
+        <div className="flex items-center">
+          <span>Style kitchen sink</span>
+          <span className="mx-3 text-white/20">|</span>
+          <span className="text-white/50">v0.1.0</span>
+        </div>
+      </div>
       <header className="sticky top-0 z-30 border-b border-jw-border bg-jw-surface/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-4">
           <div className="flex items-center gap-3">
